@@ -24,5 +24,5 @@ def normalize(pitch_profile, tonic_lead_artist, zeroval = -200):
         try:
             normalized_pitch_profile.append(1200 * (log(pitch_profile[i],2) - log(tonic_lead_artist, 2)))
         except ValueError:
-            normalized_pitch_profile.append(-200)
+            pass
     return normalized_pitch_profile

@@ -1,10 +1,9 @@
 from math import log
 import matplotlib.pyplot as plt
 import sys
-
+import predict_swara_sthanam
 from constants import swara_ratio, RAGAMS_PATH
 import load_normalize
-import predict_swaras
 
 def plot_pitch_profile(filename):
     audio = load_normalize.load(filename=filename)
@@ -14,7 +13,7 @@ def plot_pitch_profile(filename):
     tonic_lead_artist = load_normalize.tonic_lead_artist(audio)
     normalized_pitch_profile = load_normalize.normalize(pitch_profile, tonic_lead_artist)
 
-    predicted_swaras = predict_swaras.predict_swaras(audio=audio, pitch_profile=pitch_profile, tonic_lead_artist=tonic_lead_artist, normalized_pitch_profile=normalized_pitch_profile)
+    predicted_swaras = predict_swara_sthanam.predict_swaras(audio=audio, pitch_profile=pitch_profile, tonic_lead_artist=tonic_lead_artist, normalized_pitch_profile=normalized_pitch_profile)
     predicted_swaras = [1200 * log(swara_ratio[i],2) for i in predicted_swaras]
     plt.plot(normalized_pitch_profile)
 
@@ -25,7 +24,7 @@ def plot_pitch_profile(filename):
     print("Maximum Frequency Reached : ", maximum_frequency_reached)
 
     for i in swara_ratio:
-        plt.hlines(y=1200 * log(swara_ratio[i],2), xmin=0, xmax=xmax, linestyle='--')  # S
+        plt.hlines(y=1200 * log(swara_ratio[i],2), xmin=0, xmax=xmax, linestyle='--')
         plt.text(xmax, 1200 * log(swara_ratio[i],2),i)
 
     plt.title(filename.split('/')[-1])
