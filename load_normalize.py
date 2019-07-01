@@ -1,5 +1,6 @@
 import essentia.standard
 from math import log
+
 def load(filename, sampleRate=44100):
     loader = essentia.standard.MonoLoader(filename=filename, sampleRate=sampleRate)
     audio = loader()
@@ -13,9 +14,11 @@ def get_pitch_profile(audio):
     pitch_profile = pitch_profile_data[0]
     return pitch_profile
 
-def tonic_lead_artist(audio):
+def tonic_lead_artist(audio, print_val = False):
     T = essentia.standard.TonicIndianArtMusic()
     tonic_lead_artist = T(audio)
+    if print_val:
+        print("Tonic_lead_artist:", tonic_lead_artist)
     return tonic_lead_artist
 
 def normalize(pitch_profile, tonic_lead_artist, zeroval = -200):

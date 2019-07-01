@@ -1,2 +1,5 @@
 __pycache__/
 venv/
+.DS_store
+.idea/
+plots/

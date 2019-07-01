@@ -18,4 +18,10 @@ swara_ratio["N3"] = 15/8.0
 swara_ratio["S2"] = 2
 
 
-RAGAMS_PATH="/home/st/Temp/"
+BASE_PATH = "/Users/sudharsantirumalai/Documents/"
+
+PATH_MBID_RAGAID_JSON_PATH = "RagaDataset/Carnatic/_info_/path_mbid_ragaid_formatted.json"
+
+REDUCED = "RagaDataset/Carnatic/_info_/reduced.json"
+
+RAGAID_RAGANAME_JSON_PATH = "RagaDataset/Carnatic/_info_/ragaId_to_ragaName_mapping_formatted.json"

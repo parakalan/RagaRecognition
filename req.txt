@@ -1,7 +1,7 @@
 backcall==0.1.0
 cycler==0.10.0
 decorator==4.3.0
-essentia==2.1b5.dev416
+essentia==2.1c
 ipython-genutils==0.2.0
 jedi==0.12.1
 kiwisolver==1.0.1
@@ -24,3 +24,5 @@ simplegeneric==0.8.1
 six==1.11.0
 traitlets==4.3.2
 wcwidth==0.1.7
+matplotlib
+scikit-learn
