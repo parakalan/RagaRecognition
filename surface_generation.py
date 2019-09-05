@@ -1,5 +1,16 @@
-from math import floor
 import numpy as np
+from math import floor
+import scipy.ndimage as ndimage
+
+
+def postprocess(surface):
+    surface = surface / np.amax(surface)
+    alpha = 0.75
+    surface = np.power(surface, alpha)
+    surface = ndimage.gaussian_filter(surface, sigma=2, order=0)
+    norm = np.linalg.norm(surface)
+    surface = surface / norm
+    return surface
 
 
 def binning(x, eta):
@@ -8,12 +19,11 @@ def binning(x, eta):
 
 
 def generate_surface(normalized_pitch_profile, eta, tau):
-    s = np.zeros((eta, eta))
     N = len(normalized_pitch_profile)
     c = normalized_pitch_profile
 
     for i in range(len(c)):
-         c[i] = binning(c[i], eta)
+        c[i] = binning(c[i], eta)
 
     c_for_j = c[: N - tau]
     inter_matrix_c_for_j = np.reshape(np.repeat(c_for_j, eta), [N - tau, eta])

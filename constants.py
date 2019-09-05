@@ -1,4 +1,6 @@
-swara_ratio = {}
+import json
+
+swara_ratio = dict()
 swara_ratio["S"] = 1
 swara_ratio["R1"] = 256/243.0
 swara_ratio["R2"] = 16/15.0
@@ -26,7 +28,7 @@ REDUCED = "RagaDataset/Carnatic/_info_/reduced.json"
 
 RAGAID_RAGANAME_JSON_PATH = "RagaDataset/Carnatic/_info_/ragaId_to_ragaName_mapping_formatted.json"
 
-import json
+TESTING_FILE_PATH = "RagaDataset/Carnatic/_info_/testing.json"
 
 mbid_to_ragaid = json.load(open(BASE_PATH + PATH_MBID_RAGAID_JSON_PATH))
 ragaid_to_raganame = json.load(open(BASE_PATH + RAGAID_RAGANAME_JSON_PATH))

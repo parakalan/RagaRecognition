@@ -4,10 +4,8 @@ from csong import CarnaticSong
 import random
 import json
 
-def get_random_song():
-	song_dict = {}
-	ragams = {}
 
+def get_random_song():
 	with open(BASE_PATH + REDUCED) as f:
 		song_dict = json.load(f)
 
@@ -20,10 +18,9 @@ def get_random_song():
 	song = CarnaticSong(path=random_piece['path'], audio=audio, ragam=ragams[random_piece['ragaid']], mbid=key)
 	return song
 
+
 def list_songs():
 	songs = []
-	song_dict = {}
-	ragams = {}
 
 	with open(BASE_PATH + REDUCED) as f:
 		song_dict = json.load(f)

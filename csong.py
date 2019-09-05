@@ -1,4 +1,16 @@
 from constants import *
+from collections  import namedtuple
+
+CSong = namedtuple(
+	'CSong', (
+		'path',
+		'ragam',
+		'artist',
+		'tonic_pitch',
+		'mbid'
+	)
+)
+
 
 class CarnaticSong:
 
@@ -20,5 +32,8 @@ class CarnaticSong:
 	def _get_features_path(self):
 		return self.path.replace('audio', 'features')
 
+	def get_csong(self):
+		return CSong(path=self.path, ragam=self.ragam, artist=self.artist, tonic_pitch=self.tonic_pitch, mbid=self.mbid)
+
 	def __repr__(self):
-		return f"Song: {self.get_name()} \n Ragam: {self.ragam} \n Artist: {self.artist} \n TonicPitch: {str(self.tonic_pitch)}"
+		return f"Song: {self.get_name()}  Ragam: {self.ragam}  Artist: {self.artist}  TonicPitch: {str(self.tonic_pitch)}"

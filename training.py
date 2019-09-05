@@ -1,6 +1,4 @@
 from ann import PQModelANN
-from csong import CarnaticSong
-from
 import os
 import numpy as np
 
@@ -16,8 +14,8 @@ def load_surfaces():
 
 surfaces = load_surfaces()
 
-pq = PQModelANN(indexed_data=surfaces.keys())
-pq.fit(surfaces.values())
-pq.dump()
-pq.predict()
+pq = PQModelANN(indexed_data=list(surfaces.keys()))
+x = list(surfaces.values())
+pq.fit(x)
+pq.dump("")
 

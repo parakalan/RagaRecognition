@@ -1,6 +1,7 @@
 import essentia.standard
 from math import log
 
+
 def load(filename, sampleRate=44100):
     loader = essentia.standard.MonoLoader(filename=filename, sampleRate=sampleRate)
     audio = loader()
