@@ -49,6 +49,7 @@ def generate_surface(normalized_pitch_profile, eta, tau):
     """
     return s
 
+
 if __name__ == '__main__':
     # Sanity check
     normalized = [1, 2, 3, 4, 5, 6, 7, 8, 333, 876]

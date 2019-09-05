@@ -5,49 +5,40 @@ import random
 import json
 
 def get_random_song():
-	"""
-	Returns a random music piece from the dataset.
-	:return: A CarnaticSong object with attribute of the selected random piece.
-	"""
-
-	dict = {}
+	song_dict = {}
 	ragams = {}
 
 	with open(BASE_PATH + REDUCED) as f:
-		dict = json.load(f)
+		song_dict = json.load(f)
 
 	with open(BASE_PATH + RAGAID_RAGANAME_JSON_PATH) as f:
 		ragams = json.load(f)
 
-	random_piece = dict[random.choice(list(dict.keys()))]
-
+	key = random.choice(list(song_dict.keys()))
+	random_piece = song_dict[key]
 	audio = load(BASE_PATH + random_piece['path'] + '.mp3')
-
-	song = CarnaticSong(path=random_piece['path'], audio=audio, ragam=ragams[random_piece['ragaid']])
-
+	song = CarnaticSong(path=random_piece['path'], audio=audio, ragam=ragams[random_piece['ragaid']], mbid=key)
 	return song
 
 def list_songs():
-	"""
-	Returns all songs in the list.
-	:return: A list of CarnaticSong objects.
-	"""
 	songs = []
-	dict = {}
+	song_dict = {}
 	ragams = {}
 
 	with open(BASE_PATH + REDUCED) as f:
-		dict = json.load(f)
+		song_dict = json.load(f)
 
 	with open(BASE_PATH + RAGAID_RAGANAME_JSON_PATH) as f:
 		ragams = json.load(f)
 
-	for key in dict.keys():
-		audio = load(BASE_PATH + dict[key]['path'] + '.mp3')
-		song = CarnaticSong(path=dict[key]['path'], audio=audio, ragam=ragams[dict[key]['ragaid']])
+	for key in song_dict.keys():
+		audio = load(BASE_PATH + song_dict[key]['path'] + '.mp3')
+		song = CarnaticSong(path=song_dict[key]['path'], audio=audio, ragam=ragams[song_dict[key]['ragaid']], mbid=key)
 		songs.append(song)
 
 	return songs
+
+
 if __name__ == '__main__':
 	print(get_random_song())
 

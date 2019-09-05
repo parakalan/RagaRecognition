@@ -6,6 +6,7 @@ def load(filename, sampleRate=44100):
     audio = loader()
     return audio
 
+
 def get_pitch_profile(audio):
     equal_loudness = essentia.standard.EqualLoudness()
     audio = equal_loudness(audio)
@@ -14,12 +15,14 @@ def get_pitch_profile(audio):
     pitch_profile = pitch_profile_data[0]
     return pitch_profile
 
+
 def tonic_lead_artist(audio, print_val = False):
     T = essentia.standard.TonicIndianArtMusic()
     tonic_lead_artist = T(audio)
     if print_val:
         print("Tonic_lead_artist:", tonic_lead_artist)
     return tonic_lead_artist
+
 
 def normalize(pitch_profile, tonic_lead_artist, zeroval = -200):
     normalized_pitch_profile = []
