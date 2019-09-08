@@ -19,18 +19,12 @@ def get_random_song():
 	return song
 
 
-def list_songs():
+def list_songs(batch_no):
 	songs = []
-
-	with open(BASE_PATH + REDUCED) as f:
-		song_dict = json.load(f)
-
-	with open(BASE_PATH + RAGAID_RAGANAME_JSON_PATH) as f:
-		ragams = json.load(f)
-
-	for key in song_dict.keys():
-		audio = load(BASE_PATH + song_dict[key]['path'] + '.mp3')
-		song = CarnaticSong(path=song_dict[key]['path'], audio=audio, ragam=ragams[song_dict[key]['ragaid']], mbid=key)
+	keys = list(mbid_to_ragaid.keys())
+	for key in keys[10 * batch_no : 10 * (batch_no + 1)]:
+		audio = load(BASE_PATH + mbid_to_ragaid[key]['path'] + '.mp3')
+		song = CarnaticSong(path=mbid_to_ragaid[key]['path'], audio=audio, ragam=ragaid_to_raganame[mbid_to_ragaid[key]['ragaid']], mbid=key)
 		songs.append(song)
 
 	return songs

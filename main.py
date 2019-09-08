@@ -20,15 +20,25 @@ def main(song):
 if __name__ == '__main__':
 	test_set = dict()
 	index_dump = dict()
-	songs = list_songs()
-	for song in songs:
-		if song.ragam not in test_set:
-			test_set[song.ragam] = song.get_csong()
-			print(f"TEST SET: {song}")
-			continue
-		main(song)
-		index_dump[song.mbid] = song.get_csong()
-		print(f"PROCESSED {song}")
+	errors = []
+	total_no_songs = len(mbid_to_ragaid.keys())
+	for batch in range(total_no_songs // 10):
+		songs = list_songs(batch)
+		for song in songs:
+			if song.ragam not in test_set:
+				test_set[song.ragam] = song.get_csong()
+				print(f"TEST SET: {song}")
+				continue
+			try:
+				main(song)
+				index_dump[song.mbid] = song.get_csong()
+			except:
+				print(f"ERROR: {song}")
+				errors.append(song.path)
+				continue
+			print(f"PROCESSED {song}")
+		del songs
 	pickle.dump(index_dump, open("index_dump.pickle", "wb"))
 	pickle.dump(test_set, open(BASE_PATH + TESTING_FILE_PATH, "wb"))
+	pickle.dump(errors, open("errors", "wb"))
 
