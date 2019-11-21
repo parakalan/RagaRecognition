@@ -3,5 +3,5 @@ venv/
 .DS_store
 .idea/
 plots/
-testing.py
 surfaces/
+scripts/

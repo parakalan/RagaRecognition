@@ -1,10 +1,9 @@
 # RagaRecognition
 
-Attempt to identify the *ragam* of a Carnatic Music piece.
+Attempt to identify the ragam of a Carnatic Music piece.
 
 Uses a simple kNN classifier to find the ragam. 
-Direct implementation of [this](https://repositori.upf.edu/bitstream/handle/10230/33117/Gulati_ISMIR2016_time.pdf) paper.
+Implementation of [Time Delayed Melody Surfaces for Raga Recognition](https://repositori.upf.edu/bitstream/handle/10230/33117/Gulati_ISMIR2016_time.pdf).
 
-* `python main.py` - Generate surfaces for all songs except test set.
-* `python training.py` - Train all surfaces on PQ Model, create model dump.
-* `python predict.py` - Run prediction for test set.
+## Predict
+* `python predict.py <path_to_mp3> <no_of_neighbours>`

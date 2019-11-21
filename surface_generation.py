@@ -37,26 +37,6 @@ def generate_surface(normalized_pitch_profile, eta, tau):
     second = (inter_matrix_j == inter_matrix_c_for_j)
 
     s = np.dot(first.astype(int), second.astype(int))
-    """
-    inter_matrix_j = np.reshape(np.repeat(range(eta), N - 1 - tau), [tau, N - 1 -tau])
-
-    inter_matrix_i = np.tile(range(tau), [N - tau, 1])
-    inter_matrix_c_for_i = np.tile(c, [1, tau])
-    
-    print('inter_matrix_j shape : ', inter_matrix_j.shape)
-    print('inter_matrix_c_for_j shape : ', inter_matrix_c_for_j.shape)
-    print('inter_matrix_i shape : ', inter_matrix_i.shape)
-    print('inter_matrix_c_for_i shape : ', inter_matrix_c_for_i.shape)
-    
-    n = len(normalized_pitch_profile)
-    for i in range(0, eta):
-        for j in range(0, eta):
-            for t in range(tau, n):
-                first = (c[t] == i)
-                second = (c[t - tau] == j)
-                s[i][j] += int(first) * int(second)
-    print(np.array_equal(s, s_sanity))
-    """
     return s
 
 

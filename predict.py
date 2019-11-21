@@ -22,8 +22,8 @@ def predict(path, top_n):
     surface = generate_surface(normalized_p, 120, 100)
     surface = postprocess(surface)
     surface = surface.ravel()
-    p.load("")
-    index_dump = pickle.load(open("index_dump.pickle", "rb"))
+    p.load("pickles/")
+    index_dump = pickle.load(open("pickles/index_dump.pickle", "rb"))
     nearest = [index_dump[i].ragam for i in p.predict(np.float32(surface), top_n=top_n)]
     unique = set(nearest)
     d = dict()
