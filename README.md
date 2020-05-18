@@ -7,3 +7,6 @@ Implementation of [Time Delayed Melody Surfaces for Raga Recognition](https://re
 
 ## Predict
 * `python predict.py <path_to_mp3> <no_of_neighbours>`
+
+
+PLEASE CHECK OR CREATE ISSUES ON GITHUB BEFORE SENDING AN EMAIL. 
