@@ -1,5 +1,4 @@
-from constants import *
-from collections  import namedtuple
+from collections import namedtuple
 
 CSong = namedtuple(
     'CSong', (
@@ -21,10 +20,7 @@ class CarnaticSong:
         self.artist = path.split('/')[4]
         self.tonic_pitch = None
         self.mbid = mbid
-        features_path = self._get_features_path()
-
-        with open(BASE_PATH + features_path + '.tonic') as f:
-            self.tonic_pitch = float(f.read())
+        self.tonic_pitch = None
 
     def get_name(self):
         return self.path.split('/')[-1]
@@ -34,6 +30,12 @@ class CarnaticSong:
 
     def get_csong(self):
         return CSong(path=self.path, ragam=self.ragam, artist=self.artist, tonic_pitch=self.tonic_pitch, mbid=self.mbid)
+
+    def _get_tonic_pitch(self):
+        features_path = self._get_features_path()
+
+        with open(BASE_PATH + features_path + '.tonic') as f:
+            self.tonic_pitch = float(f.read())
 
     def __repr__(self):
         return f"Song: {self.get_name()}  Ragam: {self.ragam}  Artist: {self.artist}  TonicPitch: {str(self.tonic_pitch)}"
