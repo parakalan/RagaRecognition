@@ -1,4 +1,4 @@
 essentia
 matplotlib==2.2.3
-numpy==1.15.1
+#numpy==1.15.1
 nanopq==0.1.8

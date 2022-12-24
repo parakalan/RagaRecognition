@@ -3,7 +3,9 @@ from math import log
 
 
 def load(filename, sampleRate=44100):
-    loader = essentia.standard.MonoLoader(filename=filename, sampleRate=sampleRate)
+    loader = essentia.standard.EasyLoader(filename=filename,
+                                          sampleRate=sampleRate,
+                                          endTime=600)
     audio = loader()
     return audio
 
@@ -17,7 +19,7 @@ def get_pitch_profile(audio):
     return pitch_profile
 
 
-def tonic_lead_artist(audio, print_val = False):
+def tonic_lead_artist(audio, print_val=False):
     T = essentia.standard.TonicIndianArtMusic()
     tonic_lead_artist = T(audio)
     if print_val:
